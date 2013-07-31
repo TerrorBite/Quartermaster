@@ -21,6 +21,12 @@ skip_files:
 - ^(.*/)?\..*
 - ^(.*/)?.*\.bak$
 
+error_handlers:
+- error_code: over_quota
+  file: error_pages/over_quota.html
+- error_code: timeout
+  file: error_pages/timeout.html
+
 handlers:
 # Static files (stylesheet, etc)
 - url: /static
@@ -36,12 +42,13 @@ handlers:
   static_files: quartermaster/static/favicon.ico
   upload: quartermaster/static/favicon.ico
 
-# Handler for content not requiring user login
-# (main page, static content, about pages)
-- url: /((about|static).*)?
-  script: djangoappengine.main.main.application
-  
-# Handler for everything else (login required)
-- url: /.+
+# Handler for high-security content (AJAX endpoints, etc)
+- url: /api/.*
   script: djangoappengine.main.main.application
   login: required
+  auth_fail_action: unauthorized
+
+# Handler for low-security content (Our app can handle authentication for these pages)
+- url: /.*
+  script: djangoappengine.main.main.application
+  

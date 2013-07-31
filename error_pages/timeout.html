@@ -1,0 +1,285 @@
+<!DOCTYPE html> <!-- this is HTML5 -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Quartermaster - Timeout</title>
+        <style type="text/css">
+/* Common styles for the whole site */
+@font-face {
+    font-family: coda_regular;
+    src: url('//ingress.com/ttf/coda_regular.ttf');
+}
+
+html, body {
+    margin: 0;
+    background-color: #0b0c0d;
+    height: 100%;
+    font-size: 12pt;
+    font-family: coda_regular, arial, helvetica, sans-serif;
+    color: #ebbc4a;
+}
+a:link, a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    color: #59fbea;
+}
+
+a:hover, a:active {
+    color: #6fe;
+    text-shadow: 0 0 0.2em #59fbea;
+}
+a:active {
+    color: #dff;
+}
+h1 {
+    display: inline;
+    text-align: center;
+    font-family: coda_regular, arial, helvetica, sans-serif;
+    font-size: 2.5em;
+}
+
+ul, ol {
+    font-size: 90%;
+}
+
+ul {
+    list-style: none outside none;
+    margin-left: 0.5em;
+    padding-left: 0;
+}
+
+ol {
+    margin-left: 2em;
+    padding-left: 0;
+}
+
+li {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul li:before {
+    content: "\25cf";
+    font-size: 120%;
+    margin-right: 0.5em;
+}
+
+div#wrapper {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+    background-color: #081E20;
+    min-height: 100%;
+    overflow: hidden; /* makes sure sidebar float doesn't overflow */
+}
+
+img#logo {
+    width: 96px;
+    height: 96px;
+    vertical-align: middle;
+    float: left;
+}
+
+img.thumb {
+    width: 180px;
+    height: 180px;
+}
+
+div#header {
+    height: 100px;
+    overflow: hidden;
+    text-align: center;
+    border-left: solid thin #4a9299;
+    border-right: solid thin #4a9299;
+}
+
+div.item {
+    text-align: left;
+    display: inline-block;
+    border: solid thin blue;
+    margin: 5px;
+}
+
+div#sidebar {
+    font-size: 80%;
+    float: left;
+    bottom: 0;
+    width: 150px;
+    border-left: solid thin #4a9299;
+    border-right: solid thin #4a9299;
+    padding: 0.2em 4px;
+}
+
+div#content {
+    margin-left: 160px; /* avoid sidebar */
+    border-right: solid thin #4a9299;
+    padding: 0.2em 4px;
+}
+
+div#content, div#sidebar {
+    padding-bottom: 32740px;
+    margin-bottom: -32700px;
+}
+
+div#hinfo { /* user logged in section */
+    margin: 0.5em 1em;
+    font-size: 80%;
+    text-align: right;
+}
+div#navbar {
+    position: relative;
+    text-align: right;
+    overflow: hidden;
+    border: solid thin #59fbea;
+    color: #59fbea;
+    width: 798px;
+    font-size: 0;
+    background-color: rgb(0, 79, 74);
+}
+div#navbar a, div#navbar span {
+    font-size: 14pt;
+    border-right: solid thin #59fbea;
+    text-align: center;
+    display: inline-block;
+    width: 132px;
+}
+div#navbar a:last-child {
+    border-right: none;
+    width: 133px;
+}
+div#navbar a:last-child:first-child { /* i.e. only child */
+    border-left: solid thin #59fbea;
+}
+div#navbar a:hover, div#navbar a:active {
+}
+div#navbar a:active {
+    color: #eee;
+    background-image: linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(0,179,164)),
+        color-stop(0.3, rgb(0,102,95)),
+        color-stop(0.7, rgb(0,102,95)),
+        color-stop(1, rgb(0,179,164))
+    );
+}
+#searchform {
+    width: 150px;
+    font-size: 12pt;
+    text-align: center;
+}
+#searchbox {
+    padding: 0;
+    margin: 0;
+    width: 145px;
+}
+#searchbox.fade {
+    color: #999;
+}
+#submit {
+    padding: 0;
+    margin: 0;
+    width: 30px;
+}
+.searchadv {
+    display: inline-block;
+    text-align: right;
+    font-size: 11pt;
+    width: 93px;
+}
+div.navlink {
+    padding: 2px 0;
+}
+div#footer {
+    position: absolute;
+    bottom: 0;
+    width: 798px;
+    height: 40px;
+    z-index: 2;
+    text-align: center;
+    overflow: hidden;
+    font-size: 80%;
+    border-top: solid thin #4a9299;
+    border-left: solid thin #4a9299;
+    border-right: solid thin #4a9299;
+    background-color: #081E20;
+}
+.info {
+    font-size: 12pt !important;
+    font-weight: bold;
+    margin: 1.5em;
+}
+.error {
+    font-size: 12pt !important;
+    font-weight: bold;
+    color: red;
+    margin: 1.5em;
+}
+
+div.zero {
+    /* Used where content is required to force correct positioning */
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+hr {
+    background-color: #4a9299;
+    border: none;
+    height: 1px;
+}
+
+        </style>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <img id="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgBAMAAAAQtmoLAAAAAXNSR0IArs4c6QAAADBQTFRFAQAADAcICh4HBysIBTgCA0gCAFoCAG4CAHoAAIQAAJIAAJ8AAKwAALkAAL8AAMoALlJDlwAAAAF0Uk5TAEDm2GYAAAABYktHRACIBR1IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QcfBSM70UdiJgAABB1JREFUWMPdV81vE0cUfyU7SbzrQ/kP+BN66aXJIYfSVCqVfOgmsKftAaskUeUD0DQfrU+kEm7kHgBRSJtT1MRJZKkCqoStXKlETeN1fSgCEc+UA+JAPMOBU4NIeLO7If7azc6xHcmrsXd+83vf7xng/726ZxQBvXReFbCTVQNUxKYagHE+r8jAt9UYhGBFRQZeVwJIij9URGKU0rqSlcBwaVFFBwBdlBQ8zfG5WlVjgClFBs3G3YAKg1xfxjarv9G+LaoxkJVHcf3g39zj8lgUva545m1GYkZtb4WKO54KgsX2ty6LgVM3/lJJjDO0CgZXSIxRig/nSIqT6Ytp2wfItJsU0RTacKHs1tYuyX1CPARtjP0bdZ6cKzOOCcp/kt8KPD/s8Kio1T5zMTtxcb6ZkgrUllktiuC0Q+VpwfDzC343KI08P7SM5zmlUijBJaJQjlT4Mt5clnmTLCOOH1VgtRGsFgcaJqmgjzJRx98dOucIepiWSVeIzbNREbfuctZoQZ1irEZxOFw0W+QoE+l3m1+fUOxbZsxzPV+kUzIAx2M3rdz62uL1Jc8bQCYuxUC4lDHuqzPsbschSrr+/aBNcRZp2NY16JSSrkI/1cZQsOVa/JZNnMfonZbu2L2UTRQW8GXhKvSkoG9p4c39QH5FBqvF2WPpjJ5Bw+cuTGT1DJwaGvUv/CQ9jj/W89pkS4JexpDB8+QekL8R0AdwTZpzyXOEIUofrLbI+dECGNfOA8kDbBg29GP1kjUVk0G+rex831aVrHlj5gIQHC3uGB6DBFhB3OYEa+9bG55Iv4F2Hxn64JjMZCtIPN3rjk0rPSQlAbh5diSvnx/of38yLwFBLeqptNWk0TU7sXUbXxXK7+jr8x9vLfg3B5LMRXTS935uyCUeHMxFOTbVmM4BYCJuNzkYG1JxAbykls8eg6YK6M4oAmBRAeBFRE4B4CndadDQvrGD3fiVNpGmO5iKPM8H9et5MR6AB4CvawNtOkx16IbklQ8glY12HX7oBBD5QIZsm1nJSieR9nzA7MuDBMwcOs4thTIQ9iT44aviGx0+ZBAKSLBsM0DqMNpplg5EStKZGbsBYKFIZK4azvA5r9e2BxoBVRisRABW6ZbDfwdimj/eNs0TYLESmaIQCnjr1VMgqzuQ3N8TYn8/JRkG3Y5/B3wdiJyhktw2XJdyyhDAH+RYKZyBCCx8CZrSTHP2lmlKHf50eecW4IVGt3z2/mMfKs1ZyJjkM3TJUE0wCZgOAEJUIxiO0fsA/fVGT7OQukHEd8ePvw3Tu6muld0GgAj7V0ZwWNt7AafY5py45c1wfvCxEInQrPtCvMBuxtizxlIpwkbJrjSuT9FONxbt5lFJsfJFz57ty2JVRQaqWIwtrjiNWWVFwBlFFf4r6zUjfA+yUP9m/gAAAABJRU5ErkJggg=="
+                        width="96" height="96" alt="logo">
+                <div id="hinfo">&nbsp;</div>
+                <h1>Quartermaster Timed Out</h1>
+            </div>
+            <div id="navbar">
+                    
+                    <a href="#" style="visibility: hidden;"><div class="navlink">&nbsp;</div></a>
+                    
+            </div>
+            <div id="sidebar">
+            </div>
+            <div id="content">
+                
+                
+                
+                
+                
+
+                
+
+<center>
+    <br><br>
+
+    <p>Quartermaster took too long to respond to your request. Please refresh and try again.</p>
+    <p>If you continue to get this message, please notify the Webmaster.</p>
+</center>
+
+
+
+            </div> <!-- /content -->
+            <div class="zero">&nbsp;<!-- this div required for positioning --></div>
+
+            <div id="footer"><a href="mailto:terrorbite@lethargiclion.net">Contact Webmaster</a><br>Copyright &copy; 2013 TerrorBite Industries.</div>
+
+        </div>
+        
+        
+    </body>
+</html>

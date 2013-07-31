@@ -1,0 +1,47 @@
+application: quartermaster-bne
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+builtins:
+- remote_api: on
+- deferred: on
+
+inbound_services:
+- warmup
+
+skip_files:
+- ^(.*/)?app\.ya?ml
+- ^(.*/)?index\.ya?ml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.bak$
+
+handlers:
+# Static files (stylesheet, etc)
+- url: /static
+  static_dir: quartermaster/static
+
+# Special static file rule for robots.txt
+- url: /robots.txt
+  static_files: quartermaster/static/robots.txt
+  upload: quartermaster/static/robots.txt  
+
+# Special static file rule for favicon.ico
+- url: /favicon.ico
+  static_files: quartermaster/static/favicon.ico
+  upload: quartermaster/static/favicon.ico
+
+# Handler for content not requiring user login
+# (main page, static content, about pages)
+- url: /((about|static).*)?
+  script: djangoappengine.main.main.application
+  
+# Handler for everything else (login required)
+- url: /.+
+  script: djangoappengine.main.main.application
+  login: required

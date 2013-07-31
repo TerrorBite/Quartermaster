@@ -1,0 +1,205 @@
+/* Common styles for the whole site */
+@font-face {
+    font-family: coda_regular;
+    src: url('//ingress.com/ttf/coda_regular.ttf');
+}
+
+html, body {
+    margin: 0;
+    background-color: #0b0c0d;
+    height: 100%;
+    font-size: 12pt;
+    font-family: coda_regular, arial, helvetica, sans-serif;
+    color: #ebbc4a;
+}
+a:link, a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    color: #59fbea;
+}
+
+a:hover, a:active {
+    color: #6fe;
+    text-shadow: 0 0 0.2em #59fbea;
+}
+a:active {
+    color: #dff;
+}
+h1 {
+    display: inline;
+    text-align: center;
+    font-family: coda_regular, arial, helvetica, sans-serif;
+    font-size: 2.5em;
+}
+
+div#wrapper {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+    background-color: #081E20;
+    min-height: 100%;
+    overflow: hidden; /* makes sure sidebar float doesn't overflow */
+}
+
+img#logo {
+    width: 96px;
+    height: 96px;
+    vertical-align: middle;
+    float: left;
+}
+
+img.thumb {
+    width: 180px;
+    height: 180px;
+}
+
+div#header {
+    height: 100px;
+    overflow: hidden;
+    text-align: center;
+    border-left: solid thin #4a9299;
+    border-right: solid thin #4a9299;
+}
+
+div.item {
+    text-align: left;
+    display: inline-block;
+    border: solid thin blue;
+    margin: 5px;
+}
+
+div#sidebar {
+    float: left;
+    bottom: 0;
+    width: 150px;
+    border-left: solid thin #4a9299;
+    border-right: solid thin #4a9299;
+    padding: 0.2em 4px;
+}
+
+div#content {
+    margin-left: 160px; /* avoid sidebar */
+    border-right: solid thin #4a9299;
+    padding: 0.2em 4px;
+}
+
+div#content, div#sidebar {
+    padding-bottom: 32740px;
+    margin-bottom: -32700px;
+}
+
+div#hinfo { /* user logged in section */
+    margin: 0.5em 1em;
+    font-size: 80%;
+    text-align: right;
+}
+div#navbar {
+    position: relative;
+    text-align: right;
+    overflow: hidden;
+    border: solid thin #59fbea;
+    color: #59fbea;
+    width: 798px;
+    font-size: 0;
+    background-color: rgb(0, 79, 74);
+}
+div#navbar a, div#navbar span {
+    font-size: 14pt;
+    border-right: solid thin #59fbea;
+    text-align: center;
+    display: inline-block;
+    width: 132px;
+}
+div#navbar a:last-child {
+    border-right: none;
+    width: 133px;
+}
+div#navbar a:last-child:first-child { /* i.e. only child */
+    border-left: solid thin #59fbea;
+}
+div#navbar a:hover, div#navbar a:active {
+}
+div#navbar a:active {
+    color: #eee;
+    background-image: linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(0,179,164) 0%, rgb(0,102,95) 30%, rgb(0,102,95) 70%, rgb(0,179,164) 100%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(0,179,164)),
+        color-stop(0.3, rgb(0,102,95)),
+        color-stop(0.7, rgb(0,102,95)),
+        color-stop(1, rgb(0,179,164))
+    );
+}
+#searchform {
+    width: 150px;
+    font-size: 12pt;
+    text-align: center;
+}
+#searchbox {
+    padding: 0;
+    margin: 0;
+    width: 145px;
+}
+#searchbox.fade {
+    color: #999;
+}
+#submit {
+    padding: 0;
+    margin: 0;
+    width: 30px;
+}
+.searchadv {
+    display: inline-block;
+    text-align: right;
+    font-size: 11pt;
+    width: 93px;
+}
+div.navlink {
+    padding: 2px 0;
+}
+div#footer {
+    position: absolute;
+    bottom: 0;
+    width: 798px;
+    height: 40px;
+    z-index: 2;
+    text-align: center;
+    overflow: hidden;
+    font-size: 80%;
+    border-top: solid thin #4a9299;
+    border-left: solid thin #4a9299;
+    border-right: solid thin #4a9299;
+    background-color: #081E20;
+}
+.info {
+    font-size: 12pt !important;
+    font-weight: bold;
+    margin: 1.5em;
+}
+.error {
+    font-size: 12pt !important;
+    font-weight: bold;
+    color: red;
+    margin: 1.5em;
+}
+
+div.zero {
+    /* Used where content is required to force correct positioning */
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+hr {
+    background-color: #4a9299;
+    border: none;
+    height: 1px;
+}

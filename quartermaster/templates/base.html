@@ -1,0 +1,117 @@
+<!DOCTYPE html> <!-- this is HTML5 -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Quartermaster - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/style.css">
+        {% block css %}
+        {% endblock %}
+
+        {% block preload_js %}
+        {% endblock %}
+<script>
+
+// Mouseover/ Click sound effect- by JavaScript Kit (www.javascriptkit.com)
+// Visit JavaScript Kit at http://www.javascriptkit.com/ for full source code
+
+//** Usage: Instantiate script by calling: var uniquevar=createsoundbite("soundfile1", "fallbackfile2", "fallebacksound3", etc)
+//** Call: uniquevar.playclip() to play sound
+
+var html5_audiotypes={ //define list of audio file extensions and their associated audio types. Add to it if your specified audio file isn't on this list:
+        "mp3": "audio/mpeg",
+        "mp4": "audio/mp4",
+        "ogg": "audio/ogg",
+        "wav": "audio/wav"
+}
+
+function createsoundbite(sound){
+        var html5audio=document.createElement('audio')
+        if (html5audio.canPlayType){ //check support for HTML5 audio
+                for (var i=0; i<arguments.length; i++){
+                        var sourceel=document.createElement('source')
+                        sourceel.setAttribute('src', arguments[i])
+                        if (arguments[i].match(/\.(\w+)$/i))
+                                sourceel.setAttribute('type', html5_audiotypes[RegExp.$1])
+                        html5audio.appendChild(sourceel)
+                }
+                html5audio.load()
+                html5audio.playclip=function(){
+                        html5audio.pause()
+                        html5audio.currentTime=0
+                        html5audio.play()
+                }
+                return html5audio
+        }
+        else{
+                return {playclip:function(){throw new Error("Your browser doesn't support HTML5 audio unfortunately")}}
+        }
+}
+
+var clicksound=createsoundbite("/static/Success.ogg", "/static/Success.mp3")
+
+</script>
+
+        {% block extra-head %}{% endblock %}
+    </head>
+
+    <body>
+        <div id="wrapper">
+
+            <div id="header">
+                <img id="logo" src="/static/logo.png" width="96" height="96" alt="logo">
+                <div id="hinfo">
+                    {% if username %}Welcome, Agent {{ username }}{% else %}Not logged in{% endif %}
+                </div>
+                <h1>{% block header-title %}{% endblock %}</h1>
+            </div>
+            <div id="navbar">
+                    {% if username %}
+                    <a href="/"><div class="navlink" onmousedown="clicksound.playclip()">Overview</div></a>
+                    <a href="/agents"><div class="navlink" onmousedown="clicksound.playclip()">Agent List</div></a>
+                    <a href="/stats"><div class="navlink" onmousedown="clicksound.playclip()">Statistics</div></a>
+                    <a href="/update"><div class="navlink" onmousedown="clicksound.playclip()">Update</div></a>
+                    <a href="/profile"><div class="navlink" onmousedown="clicksound.playclip()">Profile</div></a>
+                    <a href="{{ local_logout_url }}"><div class="navlink" onmousedown="clicksound.playclip()">Log Out</div></a>
+                    {% else %}
+                    <a href="{{ login_url }}"><div class="navlink" onmousedown="clicksound.playclip()">Log In</div></a>
+                    {% endif %}
+            </div>
+            <div id="sidebar">
+                {% block searchbar %}
+                {% if username %}
+                <form id="searchform" method="GET" action="files">
+                    <input type="text" class="fade" name="searchterm" id="searchbox" value="Quick Search"
+                    onfocus="if(this.value==this.defaultValue){this.value='';this.className=''};"
+                    onblur="if(this.value==''){this.value=this.defaultValue;this.className='fade'}"
+                    title="Type in your search terms and press Enter"> 
+                    {#<input type="submit" name="submit" value="Go" id="submit">#}
+                    <input type="hidden" name="searchby" value="default">
+                </form>
+                <hr>
+                {% endif %}
+                {% endblock %}
+                {% block sidebar %}{% endblock %}
+            </div>
+            <div id="content">
+                {% block content-header %}
+                {% if error %}<div class="error"><h3>Oops! We seem to have encountered an error!</h3><p>{{ error }}</p></div>{% endif %}
+                {% if info %}<div class="info">{{ info }}</div>{% endif %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="info">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
+                {% endblock %}
+
+                {% block content %}{% endblock %}
+
+            </div> <!-- /content -->
+            <div class="zero">&nbsp;<!-- this div required for positioning --></div>
+
+            <div id="footer"><a href="/about">About</a> - <a href="mailto:terrorbite@lethargiclion.net">Contact Webmaster</a> - <a href="/admin">Admin</a><br>Copyright &copy; 2013 TerrorBite Industries.</div>
+
+        </div>
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load apptags %}
+{% block title %}Welcome{% endblock %}
+{% block header-title %}Quartermaster 0.1a{% endblock %}
+
+{% block sidebar %}
+{% if username %}
+{% agent_count %} Registered Agents<br>
+{% pending_agent_count %} Awaiting Approval
+<hr>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if username %}
+
+<p>There is nothing here yet...</a>
+
+{% else %}
+<center>
+    <br><br>
+    <h1>
+    SECURE AREA
+    </h1>
+
+    <p>VERIFIED ENLIGHTENED AGENTS ONLY</p>
+    <p>ACCESS LEVEL: COMMUNITY SUPER-OPS ONLY</p>
+    <a href="/register"><input type="submit" value="Request Access" disabled title="Not Yet Available"></a>
+</center>
+{% endif %}
+{% endblock %}

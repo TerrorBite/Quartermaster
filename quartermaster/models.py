@@ -1,14 +1,13 @@
 from django.db import models as m
 
-
-
 class User(m.Model):
     user_id = m.BigIntegerField(primary_key=True) # Primary key: Google-defined User ID
     codename = m.CharField(max_length=32) # Ingress codename
     first_visit = m.DateTimeField(auto_now_add=True) # Date this record was created
     latest_visit = m.DateTimeField() # Date of user's most recent use of the site
     prefs = m.CharField(max_length=1024) # Perhaps a pickled preferences object could be stored here?
-    user_comment = m.TextField(max_length=1024) # Comment by the user themselves.
+    user_comment = m.TextField(max_length=1024) # Comment by the user themselves, i.e. "about me".
+    access_level = m.IntegerField() # Quartermaster access level
 
 class UserComment(m.Model):
     key = m.IntegerField(primary_key=True) # ID

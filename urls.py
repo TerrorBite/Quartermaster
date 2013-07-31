@@ -13,8 +13,9 @@ urlpatterns = patterns('',
     # Main pages
     ('^$', 'django.views.generic.simple.direct_to_template', {'template': 'home.html'}),
     
-    ('^overview$', 'app.views.overview', {}),
-    ('^stats$', 'app.views.stats', {}),
+    ('^overview$', 'quartermaster.views.overview_view', {}),
+    ('^stats$', 'quartermaster.views.stats_view', {}),
+    ('^admin$', 'quartermaster.views.admin_view', {}),
     
     # Static files OLD DECLARATIONS FROM ANOTHER PROJECT - NOT PART OF QUARTERMASTER - EXAMPLES ONLY
     #('^favicon.ico$', 'django.views.generic.simple.redirect_to',

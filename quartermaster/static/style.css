@@ -32,6 +32,32 @@ h1 {
     font-size: 2.5em;
 }
 
+ul, ol {
+    font-size: 90%;
+}
+
+ul {
+    list-style: none outside none;
+    margin-left: 0.5em;
+    padding-left: 0;
+}
+
+ol {
+    margin-left: 2em;
+    padding-left: 0;
+}
+
+li {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul li:before {
+    content: "\25cf";
+    font-size: 120%;
+    margin-right: 0.5em;
+}
+
 div#wrapper {
     position: relative;
     width: 800px;
@@ -69,6 +95,7 @@ div.item {
 }
 
 div#sidebar {
+    font-size: 80%;
     float: left;
     bottom: 0;
     width: 150px;

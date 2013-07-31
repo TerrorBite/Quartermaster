@@ -40,10 +40,10 @@
                 {% block searchbar %}
                 {% if username %}
                 <form id="searchform" method="GET" action="files">
-                    <input type="text" class="fade" name="searchterm" id="searchbox" value="Quick Search"
+                    <input type="text" class="fade" name="searchterm" id="searchbox" value="View Agent Profile"
                     onfocus="if(this.value==this.defaultValue){this.value='';this.className=''};"
                     onblur="if(this.value==''){this.value=this.defaultValue;this.className='fade'}"
-                    title="Type in your search terms and press Enter"> 
+                    title="To view the profile of a specific agent, enter their username."> 
                     {#<input type="submit" name="submit" value="Go" id="submit">#}
                     <input type="hidden" name="searchby" value="default">
                 </form>

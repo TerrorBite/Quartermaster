@@ -13,9 +13,15 @@ urlpatterns = patterns('',
     # Main pages
     ('^$', 'django.views.generic.simple.direct_to_template', {'template': 'home.html'}),
     
-    ('^overview$', 'quartermaster.views.overview_view', {}),
     ('^stats$', 'quartermaster.views.stats_view', {}),
+    #('^update$', 'quartermaster.views.update_view', {}),
+    #('^profile$', 'quartermaster.views.profile_view', {}),
+
+    # Admin page
     ('^admin$', 'quartermaster.views.admin_view', {}),
+
+    # Login processing and redirect
+    ('^confirmlogin$', 'quartermaster.views.confirmlogin_view', {}),
     
     # Static files OLD DECLARATIONS FROM ANOTHER PROJECT - NOT PART OF QUARTERMASTER - EXAMPLES ONLY
     #('^favicon.ico$', 'django.views.generic.simple.redirect_to',

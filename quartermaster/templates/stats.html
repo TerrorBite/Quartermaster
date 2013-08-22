@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load apptags %}
+{% block title %}Statistics{% endblock %}
+{% block header-title %}Quartermaster Statistics{% endblock %}
+
+
+{% block sidebar %}
+{% if username %}
+Personal stats:
+{% personal_stats %}
+<hr>
+{% endif %}
+Useful Links:
+<ul>
+    <li><a href="https://plus.google.com/u/0/communities/110900271747903241248">SEQ Enlightened</a></li>
+    <li><a href="https://plus.google.com/u/0/communities/107241873174716431731">Enlightened Brisbane</a></li>
+    <li><a href="https://plus.google.com/u/0/communities/106730690127444415169">SEQLD-EN-L6+</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+{% if username %}
+
+<p>There is nothing here yet...</a>
+
+{% else %}
+<center>
+    <br><br>
+    <h1>
+    SECURE AREA
+    </h1>
+
+    <p>VERIFIED ENLIGHTENED AGENTS ONLY</p>
+    <p>ACCESS LEVEL 6 OR HIGHER IS REQUIRED</p>
+    <a href="/register"><input type="submit" value="Request Access" disabled title="Not Yet Available"></a>
+</center>
+{% endif %}
+{% endblock %}

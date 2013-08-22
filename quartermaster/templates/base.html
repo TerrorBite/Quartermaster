@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width">
         <title>Quartermaster - {% block title %}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" media="screen" href="/static/style.css">
+        <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="/static/mobile.css">
         {% block css %}
         {% endblock %}
 
@@ -27,7 +29,7 @@
             <div id="navbar">
                     {% if username %}
                     <a href="/"><div class="navlink" onmousedown="clicksound.playclip()">Overview</div></a>
-                    <a href="/agents"><div class="navlink" onmousedown="clicksound.playclip()">Agent List</div></a>
+                    <a href="/agents"><div class="navlink" onmousedown="clicksound.playclip()">Agent&nbsp;List</div></a>
                     <a href="/stats"><div class="navlink" onmousedown="clicksound.playclip()">Statistics</div></a>
                     <a href="/update"><div class="navlink" onmousedown="clicksound.playclip()">Update</div></a>
                     <a href="/profile"><div class="navlink" onmousedown="clicksound.playclip()">Profile</div></a>

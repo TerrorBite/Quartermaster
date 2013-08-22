@@ -1,0 +1,15 @@
+
+
+html, body {
+}
+
+div#wrapper, div#navbar, div#footer {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+}
+div#navbar a, div#navbar a:last-child {
+    width: 16.16%;
+    overflow:hidden
+}
+
